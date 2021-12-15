@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>2048</title>
+ 
+
+
+</head>
+<body>
+    <header>
+        <p id = "xxx">score:</p>
+        <p id="score"></p>
+    </header>
+
+
+    <script>
+        var x = "";
+
+        try{
+            
+           
+            if(x == "") throw "值是空的";
+            if(isNaN(x)) throw "值不是一个数字";
+
+            
+
+            
+
+            x = Number(x);
+          
+
+            if(x > 10) throw "数值太大";
+            if(x < 5)  throw "数值太小";
+
+           
+        
+        }
+
+        catch(err){
+            document.getElementById("score").innerHTML = `错误:${err}`;
+            
+        } 
+
+        finally{
+            document.getElementById("xxx").innerHTML = `x = ${x} <br>`;
+            
+        }
+    </script>
+</body>
+</html>

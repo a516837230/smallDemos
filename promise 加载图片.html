@@ -1,0 +1,49 @@
+<html>
+<head>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+<script>
+    function loadImage(src){
+        const promise = new Promise((resolve,reject) => {
+            const img = document.createElement("img");
+            img.style.margin = "10px";
+
+
+            img.onload = function(){
+                resolve(img);
+            }
+            img.onerror = function(){
+                const err = new Error(`图片加载失败，url为：${src}`);
+                reject(err);
+            }
+            img.src = src;
+        });
+
+        return promise;
+    }
+
+    const url1 = "https://img1.baidu.com/it/u=1233046205,4021793127&fm=26&fmt=auto";
+    const url2 = "https://img1.baidu.com/it/u=1646303417,1244559908&fm=26&fmt=auto";
+    
+    loadImage(url1).then(value => {
+        console.log("第一张好了");
+        
+        document.getElementById("container").appendChild(value);
+        return loadImage(url2);
+    })
+    .then(value => {
+        console.log("第二张好了");
+        
+        document.getElementById("container").appendChild(value);
+    })
+    .catch(error => {
+        console.log(`${error}`)
+    });
+
+
+</script>
+</body>
+</html>

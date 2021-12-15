@@ -1,0 +1,35 @@
+
+
+
+<html>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");  // 获取页面元素的引用指针
+    box.style.position = "absolute";  // 色块绝对定位
+    box.style.width = "20px";  // 色块宽度
+    box.style.height = "20px";  // 色块高度
+    box.style.backgroundColor = "red";  // 色块背景
+    document.onkeydown = keyDown;
+    //在Document对象中注册keyDown事件处理函数
+    function keyDown(event){  // 方向键控制元素移动函数
+        var event = event || window.event;  // 标准化事件对象
+        switch(event.keyCode){  // 获取当前按下键盘键的编码
+            case 37 :  // 按下左箭头键，向左移动5个像素
+                box.style.left = box.offsetLeft - 5  + "px";
+                break;
+            case 39 :  // 按下右箭头键，向右移动5个像素
+                box.style.left = box.offsetLeft + 5 + "px";
+                break;
+            case 38 :  // 按下上箭头键，向上移动5个像素
+                box.style.top = box.offsetTop  - 5 + "px";
+                break;
+            case 40 :  // 按下下箭头键，向下移动5个像素
+                box.style.top = box.offsetTop  + 5 + "px";
+                break;
+        }
+        return false
+    }
+</script>
+</body>
+</html>

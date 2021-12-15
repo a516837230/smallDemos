@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+    <button id="b">点击获得可爱狗狗照片！</button>
+    <img id="i">
+    <p id="p"></p>
+
+<script>
+
+    var btn = document.getElementById("b");
+    var image = document.getElementById("i");
+    var para = document.getElementById("p");
+
+   
+        btn.addEventListener("click",() => {
+
+        fetch('https://dog.ceo/api/breeds/image/random')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            image.src = data.message;
+            para.innerHTML = data.status;
+            
+        });
+    });
+
+    /*
+    btn.addEventListener("click",() => {
+        fetch("https://dog.ceo/api/breeds/image/random")
+        .then(response => response.json())
+        .then(data => image.src = data.message);
+    });
+    */
+
+</script>
+</body>
+</html>
